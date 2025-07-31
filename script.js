@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const startAutoSlide = () => {
     if (slides.length > 1) {
       // Só inicia se houver mais de um slide
-      autoSlideInterval = setInterval(showNextSlide, 3000);
+      autoSlideInterval = setInterval(showNextSlide, 2000);
     }
   };
 
@@ -47,12 +47,94 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Eventos de pesquisa
-  searchInput.addEventListener("input", filterProducts); // Pesquisa em tempo real
+  searchInput.addEventListener("input", filterProducts); 
+  
+  // Função para rolar até os produtos
+  const scrollToProducts = () => {
+    filterProducts();
+    document.getElementById('products-section').scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+  
+  // Tornando a função global para uso no HTML
+  window.scrollToProducts = scrollToProducts;
+  
   document
-    .querySelector('.search-bar button[type="submit"]')
+    .querySelector('.search-bar button[type="button"]')
     .addEventListener("click", (e) => {
       e.preventDefault();
-      filterProducts();
-      
+      scrollToProducts();
     });
+  
+  // --- Sistema de Carrinho ---
+  
+  // Função para adicionar produto ao carrinho
+  function addToCart(productData) {
+    console.log('Tentando adicionar produto:', productData); // Debug
+    
+    try {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      console.log('Carrinho atual:', cart); // Debug
+      
+      // Verifica se o produto já existe no carrinho
+      const existingItemIndex = cart.findIndex(item => item.name === productData.name);
+      
+      if (existingItemIndex > -1) {
+        // Se existe, aumenta a quantidade
+        cart[existingItemIndex].quantity += 1;
+        console.log('Produto existente, aumentando quantidade'); // Debug
+      } else {
+        // Se não existe, adiciona novo item
+        const newItem = {
+          name: productData.name,
+          price: parseFloat(productData.price),
+          image: productData.image,
+          description: productData.description,
+          quantity: 1
+        };
+        cart.push(newItem);
+        console.log('Novo produto adicionado:', newItem); // Debug
+      }
+      
+      // Salva no localStorage
+      localStorage.setItem('cart', JSON.stringify(cart));
+      console.log('Carrinho salvo no localStorage:', JSON.parse(localStorage.getItem('cart'))); // Debug
+      
+      // Mostra mensagem de sucesso
+      showAddToCartMessage(productData.name);
+      
+    } catch (error) {
+      console.error('Erro ao adicionar produto ao carrinho:', error);
+      alert('Erro ao adicionar produto ao carrinho!');
+    }
+  }
+  
+  // Função para mostrar mensagem de produto adicionado
+  function showAddToCartMessage(productName) {
+    // Remove mensagem anterior se existir
+    const existingMessage = document.querySelector('.cart-notification');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+    
+    // Cria nova mensagem
+    const message = document.createElement('div');
+    message.className = 'cart-notification';
+    message.innerHTML = `
+      <p>✅ ${productName} adicionado ao carrinho!</p>
+      <a href="carrinho.html">Ver Carrinho</a>
+    `;
+    
+    // Adiciona ao body
+    document.body.appendChild(message);
+    
+    // Remove após 3 segundos
+    setTimeout(() => {
+      message.remove();
+    }, 3000);
+  }
+  
+  // Torna a função global para uso nos botões
+  window.addToCart = addToCart;
 });

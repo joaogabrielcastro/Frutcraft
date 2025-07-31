@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras - Frutcraft</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="carrinho.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="public/logo.webp" alt="Logo da Empresa" />
+        </div>
+        <div>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="index.html#products-section">Produtos</a></li>
+                <li><a href="carrinho.html">Carrinho</a></li>
+            </ul>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar produtos..." />
+            <button type="button" onclick="window.location.href='index.html#products-section'">Pesquisar</button>
+        </div>
+    </div>
+    
+    <section class="main-content-wrapper hero-section">
+        <h1>Carrinho de Compras</h1>
+        <div class="cart-container">
+            <div id="empty-cart-message">
+                <p>Seu carrinho está vazio. <a href="index.html#products-section">Adicione produtos</a> para continuar.</p>
+            </div>
+            
+            <div id="cart-content" style="display: none;">
+                <h2>Produtos no Carrinho</h2>
+                <div class="cart-table-container">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>Imagem</th>
+                                <th>Fruta</th>
+                                <th>Descrição</th>
+                                <th>Preço Unit.</th>
+                                <th>Quantidade</th>
+                                <th>Total</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items">
+                            <!-- Os itens do carrinho serão inseridos aqui pelo JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="cart-summary">
+                    <p class="cart-total">Total Geral: <span id="cart-total">R$ 0,00</span></p>
+                    <div class="cart-actions">
+                        <button id="clear-cart-button" class="clear-cart-btn">Limpar Carrinho</button>
+                        <button id="checkout-button" class="checkout-btn">Finalizar Compra</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="checkout-success-message" style="display: none;">
+                <h2>✅ Compra Finalizada!</h2>
+                <p>Compra finalizada com sucesso! Obrigado por comprar conosco!</p>
+                <a href="index.html" class="back-to-home">Voltar ao Início</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
