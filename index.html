@@ -1,69 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalógo</title>
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catálogo de Frutas</title> <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="header">
-        <div class="logo">
-            <img src="public/logo.webp" alt="Logo da Empresa">
-        </div>
-        <div>
-            <ul>
-                <li><a href="#home">Início</a></li>
-                <li><a href="#products">Produtos</a></li>
-                <li><a href="#carrinho">Carrinho</a></li>
-            </ul>
-        </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Pesquisar produtos...">
-            <button type="submit">Pesquisar</button>
-        </div>
+      <div class="logo">
+        <img src="public/logo.webp" alt="Logo da Empresa" />
+      </div>
+      <div>
+        <ul>
+          <li><a href="#home">Início</a></li>
+          <li><a href="#products-section">Produtos</a></li>
+        </ul>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Pesquisar produtos..." />
+        <button type="submit">Pesquisar</button>
+      </div>
     </div>
-    <div class="carrosel">
-        <div class="container" id="img" >
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="">
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="">
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="">
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="">
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="">
+
+    <section id="home" class="main-content-wrapper hero-section">
+      <h1>Bem-vindo ao nosso catálogo de frutas!</h1>
+      <p>Explore nossa seleção de frutas frescas e deliciosas.</p>
+      <a href="#products-section" class="scroll-button">Ver Produtos</a>
+    </section>
+
+    <div class="main-content-wrapper">
+      <div class="carrosel">
+        <div class="container" id="img">
+          <img
+            src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png"
+            alt="Banana fresca"
+          />
+          <img
+            src="https://cdn.pixabay.com/photo/2017/08/07/08/15/pineapple-2601738_1280.jpg"
+            alt="Abacaxi suculento"
+          />
+          <img
+            src="https://cdn.pixabay.com/photo/2018/08/09/20/00/strawberry-3595503_1280.jpg"
+            alt="Morangos frescos"
+          />
+          <img
+            src="https://cdn.pixabay.com/photo/2016/08/12/22/38/lemons-1590748_1280.jpg"
+            alt="Limões vibrantes"
+          />
+          <img
+            src="https://cdn.pixabay.com/photo/2017/07/06/17/55/watermelon-2479530_1280.jpg"
+            alt="Melancia refrescante"
+          />
         </div>
-    </div>  
-    <div class="products">
+      </div>
+
+      <div class="products" id="products-section">
+        <h2>Nossos Produtos</h2> <div class="product">
+          <h2>Maça</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2019/10/27/08/52/apple-4581107_1280.jpg"
+            alt="Maçã fresca"
+          />
+          <p>Deliciosa maçã Fuji, crocante e doce.</p>
+        </div>
         <div class="product">
-            <h2>Maça</h2>
-            <img src="https://cdn.pixabay.com/photo/2019/10/27/08/52/apple-4581107_1280.jpg" alt="Produto 1">
-            <p>Descrição do Produto 1</p>
+          <h2>Banana</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png"
+            alt="Cacho de bananas"
+          />
+          <p>Bananas nanicas, perfeitas para um lanche saudável.</p>
         </div>
         <div class="product">
-            <h2>Banana</h2>
-            <img src="https://cdn.pixabay.com/photo/2016/07/08/18/05/banana-1504956_1280.png" alt="Produto 2">
-            <p>Descrição do Produto 2</p>
+          <h2>Melancia</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2017/06/12/14/53/watermelon-2395804_1280.jpg"
+            alt="Fatia de melancia"
+          />
+          <p>Melancia vermelha, suculenta e refrescante.</p>
         </div>
         <div class="product">
-            <h2>Melancia</h2>
-            <img src="https://cdn.pixabay.com/photo/2017/06/12/14/53/watermelon-2395804_1280.jpg" alt="Produto 3">
-            <p>Descrição do Produto 3</p>
+          <h2>Goiaba</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2022/02/17/03/27/fruit-7017849_1280.jpg"
+            alt="Goiaba madura"
+          />
+          <p>Goiabas rosadas, ideais para sucos e doces.</p>
         </div>
         <div class="product">
-            <h2>Goiaba</h2>
-            <img src="https://cdn.pixabay.com/photo/2022/02/17/03/27/fruit-7017849_1280.jpg" alt="Produto 4">
-            <p>Descrição do Produto 4</p>
+          <h2>Abacaxi</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2015/07/30/11/05/pineapple-867245_1280.jpg"
+            alt="Abacaxi com coroa"
+          />
+          <p>Abacaxi pérola, doce e com leve acidez.</p>
         </div>
         <div class="product">
-            <h2>Abacaxi</h2>
-            <img src="https://cdn.pixabay.com/photo/2015/07/30/11/05/pineapple-867245_1280.jpg" alt="Produto 5">
-            <p>Descrição do Produto 5</p>
+          <h2>Uva</h2>
+          <img
+            src="https://cdn.pixabay.com/photo/2017/11/02/12/24/grape-2911039_1280.jpg"
+            alt="Cacho de uvas"
+          />
+          <p>Uvas Thompson, sem sementes e muito saborosas.</p>
         </div>
-        <div class="product">
-            <h2>Uva</h2>
-            <img src="https://cdn.pixabay.com/photo/2017/11/02/12/24/grape-2911039_1280.jpg" alt="Produto 6">
-            <p>Descrição do Produto 6</p>
-        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>

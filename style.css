@@ -1,144 +1,507 @@
-@import url('https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bitcount+Single:wght@100..900&display=swap");
 
+/* Variáveis CSS para cores e valores comuns */
+:root {
+  --primary-color: #4caf50; /* Cor principal de destaque (verde) */
+  --primary-dark: #45a049; /* Versão mais escura da cor principal */
+  --text-dark: #333; /* Cor de texto escuro */
+  --text-light: #ffffff; /* Cor de texto claro (branco) */
+  --border-light: #ddd; /* Cor de borda clara */
+  --background-header: rgba(
+    255,
+    255,
+    255,
+    0.9
+  ); /* Fundo do cabeçalho com transparência */
+  --background-product: rgb(122, 117, 117); /* Fundo dos cartões de produto */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* Sombra leve */
+  --shadow-carousel: rgba(0, 128, 0, 0.3); /* Sombra do carrossel */
+  /* Adicionando variáveis para tamanhos base */
+  --base-font-size: 16px; /* Tamanho de fonte base para o body */
+  --header-height: 70px; /* Altura aproximada do cabeçalho */
+}
+
+/* Estilos base para o corpo da página - FOCO NA IMAGEM DE FUNDO */
 body {
-    font-family: 'Bitcount Single', sans-serif;
-    background-image: url('public/backgroud.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+  font-family: "Bitcount Single", sans-serif;
+  /* SHORTHAND PARA BACKGROUND: imagem, posição, tamanho, repetição, anexo */
+  /* Isso garante que a imagem cubra, centralize e não se repita */
+  background: url("public/background.jpg") center / cover no-repeat fixed;
+  margin: 0;
+  padding: 0;
+  /* Usar 100% da viewport height para garantir que o layout ocupe a tela */
+  min-height: 100vh;
+  color: var(--text-dark);
+  /* Define o tamanho de fonte base, pode ser ajustado com em/rem */
+  font-size: var(--base-font-size);
+  /* Para centralizar o conteúdo principal e usar flexbox no body */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Container principal para centralizar conteúdo */
+.main-content-wrapper {
+  max-width: 1200px; /* Largura máxima para desktops grandes */
+  margin: 0 auto; /* Centraliza o wrapper */
+  width: 100%; /* Garante que ocupe a largura disponível até o max-width */
+  padding: 0 20px; /* Padding nas laterais para não colar nas bordas */
+  box-sizing: border-box; /* Inclui padding na largura total */
+}
+
+/* Estilos da seção Hero (para o Bem-vindo ao Catálogo) */
+.hero-section {
+  color: var(--text-light); /* Cor do texto para contrastar com o background */
+  text-align: center;
+  padding: 80px 20px; /* Padding maior para dar mais destaque */
+  margin-top: calc(
+    var(--header-height) * -1
+  ); /* Levanta para ficar atrás do sticky header */
+  padding-top: calc(
+    80px + var(--header-height)
+  ); /* Ajusta padding superior para não ser cortado pelo header */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh; /* Altura mínima para ser um bom banner inicial */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra no texto para melhor legibilidade */
+}
+
+.hero-section h1 {
+  font-size: 3rem; /* Título maior */
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+
+.hero-section .scroll-button {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-section .scroll-button:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Estilos do cabeçalho */
 .header {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  background-color: var(--background-header);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--header-height); /* Define uma altura fixa ou min-height */
+  box-sizing: border-box; /* Inclui padding na altura */
 }
 
+/* Imagem do logo no cabeçalho */
 .logo img {
-    width: 50px;
-    height: auto;
-    border-radius: 50%;
+  width: 40px;
+  height: auto;
+  border-radius: 50%;
+  /* Adicionado para garantir alinhamento vertical */
+  vertical-align: middle;
 }
 
+/* Lista de navegação no cabeçalho */
 .header ul {
-    display: flex;
-    list-style: none;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
 }
 
+/* Links de navegação no cabeçalho */
 .header ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-    font-size: 20px;
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 500;
+  font-size: 1.125rem; /* Usando rem para escalar com base no font-size do body */
+  transition: color 0.3s ease;
 }
 
+/* Efeito hover nos links de navegação */
 .header ul li a:hover {
-    color: #4CAF50;
+  color: var(--primary-color);
 }
 
+/* Contêiner da barra de pesquisa */
 .search-bar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
+/* Campos de input da barra de pesquisa */
 .search-bar input {
-    padding: 8px 12px;
-    border: 2px solid #ddd;
-    border-radius: 20px;
-    outline: none;
-    transition: border-color 0.3s ease;
+  padding: 8px 12px; /* Aumentei um pouco para melhor UX */
+  border: 2px solid var(--border-light);
+  border-radius: 18px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  font-size: 0.9rem; /* Escala com base no font-size do body */
+  max-width: 200px; /* Limita a largura máxima para não esticar demais */
+  width: 100%; /* Ocupa a largura disponível até o max-width */
+  box-sizing: border-box;
 }
 
+/* Efeito de foco no input da barra de pesquisa */
 .search-bar input:focus {
-    border-color: #4CAF50;
+  border-color: var(--primary-color);
 }
 
+/* Botão da barra de pesquisa */
 .search-bar button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 8px 16px; /* Aumentei um pouco para melhor UX */
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  border: none;
+  border-radius: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem; /* Escala com base no font-size do body */
 }
 
+/* Efeito hover no botão da barra de pesquisa */
 .search-bar button:hover {
-    background-color: #45a049;
+  background-color: var(--primary-dark);
 }
 
-.product p {
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.products h2 {
-    font-size: 25px;
-    color: #ffffff;
-    text-align: center;
-    font-weight: 600;
-}
-
+/* Contêiner dos produtos */
 .products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Voltei para 20px de gap para um visual mais limpo */
+  justify-content: center;
+  padding: 40px 0; /* Ajustei padding superior/inferior */
+  margin-bottom: 20px; /* Espaço antes do footer ou próxima seção */
 }
 
+/* Título da seção de produtos */
+.products h2 {
+  width: 100%;
+  font-size: 1.8rem; /* Usando rem, ligeiramente maior para ser um título de seção */
+  color: var(--text-light);
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 30px; /* Mais espaço para o título */
+}
+
+/* Cartão de produto individual */
 .product {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    width: calc(30% - 20px);
-    box-sizing: border-box;
-    background-color: rgb(122, 117, 117);
+  border: 1px solid var(--border-light);
+  border-radius: 8px; /* Ligeiramente mais arredondado */
+  padding: 15px; /* Aumentei o padding para dar mais respiro */
+  /* Usando calc para 3 colunas, ajustando para o gap de 20px */
+  width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  background-color: var(--background-product);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Adicionei uma sombra para destacar */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.product:hover {
+  transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagem dentro do cartão de produto */
 .product img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+  max-width: 100%;
+  height: auto; /* Permite que a altura se ajuste com a largura */
+  border-radius: 5px;
+  margin-bottom: 15px; /* Mais espaço abaixo da imagem */
+  /* Usar aspect-ratio e object-fit para controle de proporção */
+  aspect-ratio: 1 / 1; /* Tenta manter a imagem quadrada */
+  object-fit: contain; /* Garante que a imagem caiba dentro do espaço */
+  max-height: 150px; /* Limite de altura para imagens de produto */
 }
 
+/* Título do produto (dentro do cartão) */
+.product h2 {
+  font-size: 1.3rem; /* Menor que o h2 da seção .products */
+  color: var(--text-light); /* Garante que a cor seja a do produto */
+  margin-top: 0; /* Remove margem superior padrão do h2 */
+  margin-bottom: 10px; /* Espaço abaixo do título do produto */
+  text-align: center;
+  width: auto; /* Remove largura 100% que estava vindo do .products h2 */
+}
+
+/* Parágrafo de texto dentro do cartão de produto */
+.product p {
+  font-size: 0.9rem; /* Escala com base no font-size do body */
+  color: var(--text-light);
+  margin: 0;
+  flex-grow: 1; /* Faz o parágrafo ocupar o espaço restante se houver descrições de tamanhos diferentes */
+  display: flex; /* Para alinhar melhor o texto se for uma única linha */
+  align-items: flex-end; /* Alinha o texto na parte de baixo do espaço disponível */
+  padding-top: 5px; /* Um pequeno padding superior */
+}
+
+/* Estilos para o Carrossel */
 .carrosel {
-    box-shadow: 0 4px 20px rgba(0, 128, 0, 0.3);
-    overflow: hidden;
-    height: 500px;
-    width: 100%;
-    position: relative;
-    margin: 20px 0;
-    border-radius: 15px;
+  box-shadow: 0 4px 20px var(--shadow-carousel);
+  overflow: hidden;
+  /* Usando VH (viewport height) para altura, mais responsivo */
+  height: 35vh; /* 35% da altura da tela. Ajusta dinamicamente */
+  min-height: 200px; /* Altura mínima para não ficar muito pequeno */
+  max-height: 400px; /* Altura máxima para não ficar muito grande */
+  width: 100%;
+  position: relative;
+  margin: 20px 0;
+  border-radius: 15px;
 }
 
+/* Contêiner interno das imagens do carrossel */
 .container {
-    display: flex;
-    width: 100%;
-    height: 500px;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  width: 100%;
+  /* Herda a altura do parent, essencial para o VH funcionar */
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
 }
 
+/* Imagens dentro do carrossel */
 .container img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    flex-shrink: 0;
+  width: 100%;
+  /* Herda a altura do parent */
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+  flex-shrink: 0;
+}
+
+/* Estilos para o Rodapé */
+footer {
+  background-color: var(--background-product); /* Usando cor dos produtos */
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px;
+  margin-top: auto; /* Empurra o footer para o final se o body for flex-direction: column */
+}
+
+/* --- Media Queries para Responsividade (ESSENCIAL para ajuste em telas menores!) --- */
+/* A estratégia é definir um layout padrão (desktop) e então ajustar para telas menores. */
+
+/* Ajustes para telas médias (Laptops menores, tablets grandes) */
+@media (max-width: 1200px) {
+  .main-content-wrapper {
+    padding: 0 15px; /* Reduz padding lateral */
+  }
+  .header ul {
+    gap: 15px; /* Reduz espaço entre itens do menu */
+  }
+  .header ul li a {
+    font-size: 1rem; /* Ligeiramente menor */
+  }
+  .search-bar input,
+  .search-bar button {
+    font-size: 0.85rem;
+  }
+  .products {
+    gap: 15px; /* Reduz gap entre produtos */
+  }
+  .product {
+    /* Mantém 3 colunas, mas se ajusta ao novo gap */
+    width: calc(33.333% - 15px);
+    padding: 12px;
+  }
+  .product h2 {
+    font-size: 1.2rem;
+  }
+  .product p {
+    font-size: 0.85rem;
+  }
+  .carrosel {
+    height: 30vh; /* Ajusta altura do carrossel */
+    min-height: 180px;
+    max-height: 350px;
+  }
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Ajustes para Tablets (Paisagem e Retrato) */
+@media (max-width: 992px) {
+  .header {
+    flex-direction: column; /* Menu empilhado no cabeçalho */
+    gap: 10px;
+    height: auto; /* Altura automática para acomodar o empilhamento */
+    padding: 10px;
+  }
+  .header ul {
+    flex-wrap: wrap; /* Permite que os itens do menu quebrem linha */
+    justify-content: center;
+    gap: 10px;
+  }
+  .search-bar {
+    width: 100%; /* Barra de pesquisa ocupa toda a largura */
+    justify-content: center;
+  }
+  .products h2 {
+    font-size: 1.6rem; /* Título da seção produtos */
+  }
+  .product {
+    /* 2 colunas para tablets */
+    width: calc(50% - 15px);
+    padding: 10px;
+  }
+  .product img {
+    max-height: 120px; /* Reduz altura da imagem do produto */
+  }
+  .product h2 {
+    font-size: 1.1rem; /* Título dentro do produto */
+  }
+  .product p {
+    font-size: 0.8rem;
+  }
+  .carrosel {
+    height: 25vh; /* Ajusta altura do carrossel para tablets */
+    min-height: 150px;
+    max-height: 300px;
+    margin: 15px 0;
+  }
+  .hero-section {
+    padding: 60px 20px;
+    min-height: 40vh;
+  }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+}
+
+/* Ajustes para Smartphones */
+@media (max-width: 768px) {
+  .main-content-wrapper {
+    padding: 0 10px;
+  }
+  .logo img {
+    width: 35px; /* Logo menor */
+  }
+  .header ul li a {
+    font-size: 0.9rem;
+  }
+  .search-bar input {
+    max-width: 150px;
+  }
+  .search-bar button {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+  }
+  .products h2 {
+    font-size: 1.4rem; /* Título da seção produtos */
+  }
+  .product {
+    /* 1 coluna para smartphones */
+    width: calc(
+      100% - 10px
+    ); /* Ajustado para 100% da largura do pai - padding */
+    padding: 10px;
+    gap: 10px;
+  }
+  .product img {
+    max-height: 100px; /* Altura da imagem para celular */
+  }
+  .product h2 {
+    font-size: 1rem; /* Título dentro do produto */
+  }
+  .product p {
+    font-size: 0.75rem;
+  }
+  .carrosel {
+    height: 20vh; /* Altura mínima do carrossel para smartphones */
+    min-height: 120px;
+    max-height: 250px;
+    margin: 10px 0;
+  }
+  .hero-section {
+    padding: 40px 10px;
+    min-height: 30vh;
+  }
+  .hero-section h1 {
+    font-size: 1.8rem;
+  }
+  .hero-section p {
+    font-size: 0.9rem;
+  }
+  .hero-section .scroll-button {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes extras para telas muito pequenas */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 10px;
+  }
+  .header ul {
+    gap: 8px;
+  }
+  .header ul li a {
+    font-size: 0.8rem;
+  }
+  .search-bar input,
+  .search-bar button {
+    font-size: 0.75rem;
+  }
+  .products {
+    padding: 10px 5px;
+    gap: 10px;
+  }
+  .product {
+    padding: 8px;
+  }
+  .product img {
+    max-height: 80px;
+    margin-bottom: 8px;
+  }
+  .product h2 {
+    font-size: 0.9rem;
+  }
+  .product p {
+    font-size: 0.7rem;
+  }
+  .carrosel {
+    height: 15vh; /* Altura mínima extrema para carrossel */
+    min-height: 100px;
+    max-height: 200px;
+  }
+  .hero-section {
+    padding: 30px 10px;
+    min-height: 25vh;
+  }
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+  .hero-section p {
+    font-size: 0.8rem;
+  }
 }
